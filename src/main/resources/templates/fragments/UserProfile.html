@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container bg-light" th:fragment="profile">
+  <div class="row">
+    <div class="col-6" th:object="${article}">
+      <h2>Profile Information</h2>
+        <div class="row">
+            <div class="col-2">Name : </div>
+            <div class="col-6"><p th:text="*{author.name}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Gender : </div>
+            <div class="col-6"><p th:text="*{author.gender}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-2">Address : </div>
+            <div class="col-6"><p th:text="*{author.address}"></p></div>
+        </div>
+        <div class="row">
+            <div class="col-2">E-mail : </div>
+            <div class="col-6"><p th:text="*{author.email}"></p></div>
+        </div>
+    </div>
+    <div class="col-6">
+     <div th:if="${article}">
+         <div class="card position-relative m-3" th:fragment="card" th:each="article:${lastArticle}">
+             <img onclick="goto()" th:src="${article.imageURL}" class="card-img-top " alt="...">
+             <div class="row">
+                 <div class="col-4" >
+                     <a th:href="@{'/viewprofile/'+${article.id}}" style="cursor: pointer"><img  class="image-profile border-3 border btn-primary position-absolute rounded-circle " th:src="${article.author.profileImage}" alt=""/></a>
+                 </div>
+                 <div class="col-6">
+                     <h3 th:text="${article.author.name}"></h3>
+                     <h5 class="text-warning">@[[${article.author.username}]]</h5>
+
+                 </div>
+             </div>
+             <div class="card-body">
+                 <h5 class="card-title " th:text="${article.title}">Card title</h5>
+                 <div class="d-flex gap-2">
+                     <p class="card-title bg-warning rounded-2 p-1 text-white">[[${article.category.category}]]</p>
+                     <p class="card-title bg-warning rounded-2 p-1 text-white">Programming</p>
+                 </div>
+                 <p class="card-text" th:text="${article.article}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+             </div>
+         </div>
+     </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

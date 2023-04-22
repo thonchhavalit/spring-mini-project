@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-4 g-3" th:fragment="UserCard" th:each="article:${article}">
+  <div class="card ">
+    <img th:src="${article.imageURL}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title" th:text="${article.author.username}"></h5>
+      <p class="card-text" th:text="${article.article}"></p>
+      <a th:href="@{'/my-profile/'+${article.id}}" class="btn btn-primary">View Profile</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
