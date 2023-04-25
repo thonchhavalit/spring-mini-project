@@ -19,12 +19,12 @@
        </div>
    </div>
        <div class="card-body">
-    <h5 class="card-title " th:text="${article.title}"></h5>
+    <h3 class="card-title " th:text="${article.title}"></h3>
            <div class="d-flex gap-2">
            <p class="card-title bg-warning rounded-2 p-1 text-white">[[${article.category.category}]]</p>
            </div>
     <p class="card-text" th:text="${article.article}"></p>
-           <div class=" float-end ">
+           <div class="  d-flex justify-content-between">
                <button class="btn btn-primary"  ><a>View</a></button>
                <button class="btn btn-warning"><a>Edit</a></button>
                <button class="btn btn-danger" onclick="confirm('are you sure?')"><a  th:href="@{'/deleteId/'+${article.articleID}}">Delete</a></button>

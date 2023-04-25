@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +18,6 @@ public class ArticleRequest {
     private String description;
     private int authorId;
     private int categoryId;
+    private MultipartFile file;
 
 }

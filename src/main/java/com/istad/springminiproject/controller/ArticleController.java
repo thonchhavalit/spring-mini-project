@@ -2,7 +2,6 @@ package com.istad.springminiproject.controller;
 
 
 import com.istad.springminiproject.model.Article;
-import com.istad.springminiproject.model.Author;
 import com.istad.springminiproject.model.Category;
 import com.istad.springminiproject.repository.request.ArticleRequest;
 import com.istad.springminiproject.service.ArticleService;
@@ -69,12 +68,12 @@ public class ArticleController {
         return "my-profile";
     }
     @GetMapping("/create-post")
-    public String formPost(Model model){
-        List<Author> authors= authorService.getAllAuthor();
-        List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("articleRequest",new ArticleRequest());
-        model.addAttribute("author",authors);
-        model.addAttribute("category",categories);
+    public String getAddNew(Model model){
+//        List<Author> authors= authorService.getAllAuthor();
+//        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("article",new ArticleRequest());
+        model.addAttribute("author", authorService.getAllAuthor());
+        model.addAttribute("category",categoryService.getAllCategories());
         return "create-post";
     }
     @PostMapping("/AddArticle")
@@ -105,7 +104,7 @@ public class ArticleController {
         newArticle.setArticleID(articleService.getAllArticle().stream().max(Comparator.comparingInt(Article::getArticleID)).orElseThrow().getArticleID() + 1);
         System.out.println("article is : "+newArticle);
         articleService.addNewArticle(newArticle);
-        return "redirect:/home";
+        return "redirect:/homepage";
 
     }
     @GetMapping("/deleteId/{id}")

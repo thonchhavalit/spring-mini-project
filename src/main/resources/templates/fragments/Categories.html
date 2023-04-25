@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,7 +9,7 @@
 <body>
 <div class="row" th:fragment="category" >
   <div class="col-10">
-    <img class="w-100 h-75 " src="https://api.istad.co/media/image/a3c4f87e-7a85-44c3-a568-6c5abef76cfe.png">
+    <img class="w-100 h-75 " src="https://api.istad.co/media/image/a3c4f87e-7a85-44c3-a568-6c5abef76cfe.png" alt=""/>
     <h1>Article</h1>
     <p>welcome to valit web application!</p>
     <hr class="bg-light">
@@ -16,7 +18,7 @@
       <div class="col-6">
         <th:block th:each="category : ${category}">
         <button  class="btn w-100 mt-2 btn btn btn-info">
-          <a  class="text-decoration-none text-black"  th:text="${category.category}" th:href="@{'/alluser/'+${category.id}}"></a>
+          <a  class="text-decoration-none text-black"  th:text="${category.category}" th:href="@{'/all-user/'+${category.id}}"></a>
         </button>
         </th:block>
       </div>

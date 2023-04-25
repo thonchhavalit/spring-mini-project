@@ -7,12 +7,12 @@
 </head>
 <body>
 
-    <form enctype="multipart/form-data" th:fragment="CreatePost" th:object="${articleRequest}"  class="form-group pt-3" th:href="@{/handleAddArticle}" method="post">
+    <form th:object="${article}"  method="POST" enctype="multipart/form-data" th:fragment="CreatePost" class="form-group pt-3" th:action="@{/handleAddArticle}" >
         <div class="row bg-light "  >
     <div class="col-5 ps-5 pt-5" >
         <div class="w-75 ">
-            <img class="w-100 " id="output-image" src="https://th.bing.com/th/id/OIP.FjLkalx51D8xJcpixUGJywHaE8?pid=ImgDet&rs=1">
-            <input class="w-100 mt-2" name="file"  type="file" onchange="postImage(event)">
+            <img class="w-100 " id="output-image" src="https://th.bing.com/th/id/OIP.FjLkalx51D8xJcpixUGJywHaE8?pid=ImgDet&rs=1" alt="">
+            <input class="w-100 mt-2" name="file"  type="file" onchange="post(event)">
         </div>
     </div>
 
@@ -47,10 +47,12 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-between mt-4 mb-5">
-               <button class="btn btn-primary"><a>Save</a></button>
-                <button class="btn btn-danger"><a>Cancel</a></button>
+        <form action="" method="POST">
+            <div class="mt-2">
+                <button class="btn btn-warning" type="submit"> Post Article </button>
+                <button class="btn btn-danger"> Cancel</button>
             </div>
+        </form>
 
     </div>
 
