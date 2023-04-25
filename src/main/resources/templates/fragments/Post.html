@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form th:object="${article}"  method="POST" enctype="multipart/form-data" th:fragment="CreatePost" class="form-group pt-3" th:action="@{/handleAddArticle}" >
+    <form th:object="${article}"  method="POST" enctype="multipart/form-data" th:fragment="CreatePost" class="form-group pt-3" th:action="@{/AddArticle}" >
         <div class="row bg-light "  >
     <div class="col-5 ps-5 pt-5" >
         <div class="w-75 ">
@@ -32,7 +32,7 @@
                 <div class="">
                     <label  class="fs-6 d-block">Author</label>
                         <select th:field="*{authorId}" class="form-select form-select-lg mb-3 w-100" aria-label=".form-select-lg example">
-                        <option th:each="author:${author}" th:value="${author.id}" th:text="${author.name}"></option>
+                        <option th:each="author:${author}" th:value="${author.AuthorId}" th:text="${author.name}"></option>
                     </select>
 
                 </div>

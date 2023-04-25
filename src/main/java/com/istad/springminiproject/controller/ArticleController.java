@@ -2,6 +2,7 @@ package com.istad.springminiproject.controller;
 
 
 import com.istad.springminiproject.model.Article;
+import com.istad.springminiproject.model.Author;
 import com.istad.springminiproject.model.Category;
 import com.istad.springminiproject.repository.request.ArticleRequest;
 import com.istad.springminiproject.service.ArticleService;
@@ -69,11 +70,11 @@ public class ArticleController {
     }
     @GetMapping("/create-post")
     public String getAddNew(Model model){
-//        List<Author> authors= authorService.getAllAuthor();
-//        List<Category> categories = categoryService.getAllCategories();
+        List<Author> authors= authorService.getAllAuthor();
+        List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("article",new ArticleRequest());
-        model.addAttribute("author", authorService.getAllAuthor());
-        model.addAttribute("category",categoryService.getAllCategories());
+        model.addAttribute("author", authors);
+        model.addAttribute("category",categories);
         return "create-post";
     }
     @PostMapping("/AddArticle")
@@ -97,7 +98,7 @@ public class ArticleController {
         newArticle.setTitle(article.getTitle());
         newArticle.setArticle(article.getDescription());
         newArticle.setId(article.getAuthorId());
-        newArticle.setAuthor(authorService.getAllAuthor().stream().filter(e -> e.getId() == article.getAuthorId())
+        newArticle.setAuthor(authorService.getAllAuthor().stream().filter(e -> e.getAuthorId() == article.getAuthorId())
                 .findFirst().orElse(null));
         newArticle.setCategory(categoryService.getAllCategories().stream().filter(el->el.getId()==article.getCategoryId())
                 .findFirst().orElse(null));

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Author {
-    private int id;
+    private int authorId;
     private String name;
     private String username;
     private String profileImage;

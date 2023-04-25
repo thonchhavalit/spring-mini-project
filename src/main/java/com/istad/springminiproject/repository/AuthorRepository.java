@@ -21,7 +21,7 @@ public class AuthorRepository {
     }
     public List<Author> getArticleAllAuthor(int id) {
         return authors.stream()
-                .filter(el -> el.getId() == id)
+                .filter(el -> el.getAuthorId() == id)
                 .collect(Collectors.toList());
     }
 }
